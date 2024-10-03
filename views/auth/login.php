@@ -1,13 +1,14 @@
+<?php include '../public/config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 </head>
 <body>
     <div class="login-form">
-        <form method="POST" action="../../public/index.php?route=login">
+        <form method="POST" action="<?= BASE_URL ?>index.php?route=login">
             <h2>Login</h2>
             <div class="input-group">
                 <label for="username">Username:</label>

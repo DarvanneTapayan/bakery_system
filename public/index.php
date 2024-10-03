@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+// Include the config file to access the BASE_URL constant
+include_once 'config.php';
+
 $route = isset($_GET['route']) ? $_GET['route'] : '';
 
 switch($route) {
@@ -11,7 +14,7 @@ switch($route) {
             $isAuthenticated = $authController->login($_POST);
 
             if ($isAuthenticated) {
-                header("Location: index.php?route=dashboard");
+                header("Location: " . BASE_URL . "index.php?route=dashboard");
             } else {
                 echo "Login Failed!";
             }
@@ -19,7 +22,7 @@ switch($route) {
             include '../views/auth/login.php';
         }
         break;
-    
+
     case 'products':
         include_once '../controllers/ProductController.php';
         $productController = new ProductController();
@@ -31,7 +34,7 @@ switch($route) {
         include_once '../controllers/AuthController.php';
         $authController = new AuthController();
         $authController->logout();
-        header("Location: index.php?route=login");
+        header("Location: " . BASE_URL . "index.php?route=login");
         break;
 
     default:

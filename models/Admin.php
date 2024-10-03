@@ -54,6 +54,10 @@ class Admin {
 
     // Login Admin (Authentication)
     public function login() {
+        if (!isset($this->username) || !isset($this->password)) {
+            return false;  // Ensure username and password are set
+        }
+
         $query = "SELECT * FROM " . $this->table . " WHERE username = :username";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":username", $this->username);

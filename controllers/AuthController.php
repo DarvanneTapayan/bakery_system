@@ -13,9 +13,14 @@ class AuthController {
     }
 
     public function login($data) {
+        if (!isset($data['username']) || !isset($data['password'])) {
+            return false;  // Ensure username and password are provided
+        }
+
+        // Pass the form data to the Admin model for login
         $this->admin->username = $data['username'];
         $this->admin->password = $data['password'];
-        
+
         $admin = $this->admin->login();
         if ($admin) {
             // Set session variables for the logged-in user
